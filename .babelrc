@@ -5,7 +5,9 @@
       "module-resolver",
       {
         "root": [],
-        "alias": {}
+        "alias": {
+          "src": "./src"
+        }
       }
     ],
     "transform-object-rest-spread"

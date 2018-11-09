@@ -32,7 +32,11 @@
     "pretty-quick": "^1.8.0",
     "rimraf": "^2.6.1"
   },
-  "dependencies": {},
+  "dependencies": {
+    "mitmproxy": "git+https://github.com/jvilk/mitmproxy-node.git",
+    "query-string": "^6.2.0",
+    "ramda": "^0.25.0"
+  },
   "husky": {
     "hooks": {
       "pre-commit": "pretty-quick --staged"
