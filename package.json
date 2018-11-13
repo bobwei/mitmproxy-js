@@ -41,5 +41,8 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
+  },
+  "nodemonConfig": {
+    "delay": "3000"
   }
 }
