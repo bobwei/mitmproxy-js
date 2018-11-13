@@ -34,7 +34,11 @@ MITMProxy.Create(
   [] /* list of paths to directly intercept -- don't send to server */,
   true /* Be quiet; turn off for debug messages */,
   false /* Only intercept text or potentially-text requests (all mime types with *application* and *text* in them, plus responses with no mime type) */,
-);
+)
+  .then(() => {
+    console.log('start listening...');
+  })
+  .catch(console.log);
 
 process.once('SIGINT', cleanup);
 process.once('SIGUSR2', cleanup);
