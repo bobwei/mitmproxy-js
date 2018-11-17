@@ -33,6 +33,7 @@
     "rimraf": "^2.6.1"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "mitmproxy": "git+https://github.com/jvilk/mitmproxy-node.git",
     "query-string": "^6.2.0",
     "ramda": "^0.25.0"

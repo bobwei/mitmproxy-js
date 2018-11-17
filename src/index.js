@@ -8,6 +8,8 @@ import cleanup from 'src/utils/functions/cleanup';
 // prettier-ignore
 const interceptors = R.pipeP(
   require('src/google-analytics').default,
+  require('src/inject-scripts').default,
+  require('src/inject-scripts/modifyJs').default,
 );
 
 cleanup();
