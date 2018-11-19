@@ -4,7 +4,16 @@ import cheerio from 'cheerio';
 const fn = async (interceptedMsg) => {
   const shouldHandleRequest = R.pipe(
     R.path(['request', 'url']),
-    R.allPass([R.propEq('host', 'today.line.me'), R.propEq('pathname', '/tw')]),
+    R.allPass([
+      R.pipe(
+        R.prop('host'),
+        R.match(/today\.line.*\.me/),
+      ),
+      R.pipe(
+        R.prop('pathname'),
+        R.anyPass([R.equals('/tw'), R.equals('/tw/main')]),
+      ),
+    ]),
   )(interceptedMsg);
   if (shouldHandleRequest) {
     const $ = cheerio.load(interceptedMsg.responseBody.toString());
