@@ -1,10 +1,10 @@
 import * as R from 'ramda';
 import querystring from 'query-string';
 
-import isGARequest from './functions/isGARequest';
+import shouldHandleRequest from './shouldHandleRequest';
 
 const fn = async (interceptedMsg) => {
-  if (isGARequest(interceptedMsg)) {
+  if (shouldHandleRequest(interceptedMsg)) {
     const { request } = interceptedMsg;
     const targetFields = [
       'ec',
