@@ -1,21 +1,9 @@
-import * as R from 'ramda';
 import cheerio from 'cheerio';
 
+import shouldHandleRequest from './shouldHandleRequest';
+
 const fn = async (interceptedMsg) => {
-  const shouldHandleRequest = R.pipe(
-    R.path(['request', 'url']),
-    R.allPass([
-      R.pipe(
-        R.prop('host'),
-        R.match(/today\.line.*\.me/),
-      ),
-      R.pipe(
-        R.prop('pathname'),
-        R.anyPass([R.equals('/tw'), R.equals('/tw/main')]),
-      ),
-    ]),
-  )(interceptedMsg);
-  if (shouldHandleRequest) {
+  if (shouldHandleRequest(interceptedMsg)) {
     const $ = cheerio.load(interceptedMsg.responseBody.toString());
     $('script').eq(5).before(`
       <script>
