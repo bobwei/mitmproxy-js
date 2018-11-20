@@ -24,7 +24,7 @@ brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/f2a764ef94
 ## Start
 
 ```
-./node_modules/.bin/babel-node src/index.js
+npm start
 ```
 
 Then you can start intercepting network requests using node.js.

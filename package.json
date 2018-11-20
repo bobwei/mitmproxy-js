@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "dev": "nodemon src/index.js --exec babel-node",
-    "start": "node lib/index.js",
+    "start": "./node_modules/.bin/babel-node src/index.js",
     "build": "npm run clean && babel src --out-dir lib --copy-files",
     "test": "jest",
     "clean": "rimraf lib"
