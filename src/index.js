@@ -1,24 +1,21 @@
-/* eslint-disable import/no-extraneous-dependencies */
-
+/* eslint-disable import/no-dynamic-require */
 import MITMProxy from 'mitmproxy';
 import * as R from 'ramda';
+import glob from 'glob';
 
 import cleanup from 'src/utils/functions/cleanup';
 
-const handlers = R.pipeP(
-  require('src/handlers/google-analytics').default,
-  require('src/handlers/inject-scripts').default,
-  require('src/handlers/modify-js').default,
-);
+/*
+  Automatically load handlers defined in src/handlers/
+*/
+const cwd = __dirname;
+const handlers = glob
+  .sync(`handlers/*`, { cwd, absolute: true })
+  .map((handlerPath) => require(handlerPath).default);
 
 cleanup();
 
-MITMProxy.Create(
-  handlers,
-  [] /* list of paths to directly intercept -- don't send to server */,
-  true /* Be quiet; turn off for debug messages */,
-  false /* Only intercept text or potentially-text requests (all mime types with *application* and *text* in them, plus responses with no mime type) */,
-)
+MITMProxy.Create(R.pipeP(...handlers), [], true, false)
   .then(() => {
     console.log('start listening...');
   })
