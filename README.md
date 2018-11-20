@@ -29,6 +29,25 @@ npm start
 
 Then you can start intercepting network requests using node.js.
 
+## Development
+
+To intercept a request, define your own handers under `src/handlers/`. Then your handlers will be [loaded](src/index.js) automatically.
+
+[Example handler](src/handlers/boilerplate/index.js):
+
+```js
+import shouldHandleRequest from './shouldHandleRequest';
+
+const fn = async (interceptedMsg) => {
+  if (shouldHandleRequest(interceptedMsg)) {
+    console.log(interceptedMsg.request.url.pathname);
+  }
+  return interceptedMsg;
+};
+
+export default fn;
+```
+
 ## Notes
 
 ### Convenient Scripts for Mac
