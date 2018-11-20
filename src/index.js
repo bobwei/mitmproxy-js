@@ -5,17 +5,16 @@ import * as R from 'ramda';
 
 import cleanup from 'src/utils/functions/cleanup';
 
-// prettier-ignore
-const interceptors = R.pipeP(
-  require('src/google-analytics').default,
-  require('src/inject-scripts').default,
-  require('src/modify-js').default,
+const handlers = R.pipeP(
+  require('src/handlers/google-analytics').default,
+  require('src/handlers/inject-scripts').default,
+  require('src/handlers/modify-js').default,
 );
 
 cleanup();
 
 MITMProxy.Create(
-  interceptors,
+  handlers,
   [] /* list of paths to directly intercept -- don't send to server */,
   true /* Be quiet; turn off for debug messages */,
   false /* Only intercept text or potentially-text requests (all mime types with *application* and *text* in them, plus responses with no mime type) */,
