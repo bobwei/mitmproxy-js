@@ -10,6 +10,9 @@ const fn = async (interceptedMsg) => {
       'ec',
       'ea',
       'el',
+      'dp',
+      'dt',
+      't',
       ...R.range(1, 51).map((i) => `cd${i}`),
     ];
     const result = R.pipe(
