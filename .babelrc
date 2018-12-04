@@ -10,6 +10,12 @@
         }
       }
     ],
-    "transform-object-rest-spread"
+    "transform-object-rest-spread",
+    [
+      "babel-plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ]
   ]
 }
