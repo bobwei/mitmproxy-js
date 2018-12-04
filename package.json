@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "mitmproxy-js",
   "version": "",
   "description": "",
   "scripts": {
@@ -8,6 +8,9 @@
     "build": "npm run clean && babel src --out-dir lib --copy-files",
     "test": "jest",
     "clean": "rimraf lib"
+  },
+  "bin": {
+    "mitmjs": "./lib/index.js"
   },
   "author": "",
   "license": "MIT",

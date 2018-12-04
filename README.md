@@ -29,6 +29,18 @@ npm start
 
 Then you can start intercepting network requests using node.js.
 
+## Cli
+
+```
+mitmjs
+```
+
+or
+
+```
+networksetup -setwebproxy 'Wi-Fi' 0.0.0.0 8080 && networksetup -setsecurewebproxy 'Wi-Fi' 0.0.0.0 8080 && mitmjs
+```
+
 ## Development
 
 To intercept a request, define your own handers under `src/handlers/`. Then your handlers will be [loaded](src/index.js) automatically.

@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /* eslint-disable import/no-dynamic-require */
 import MITMProxy from 'mitmproxy';
 import * as R from 'ramda';
