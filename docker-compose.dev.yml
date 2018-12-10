@@ -3,8 +3,10 @@ version: '2'
 services:
   app:
     build: .
-    command: yarn dev
-    env_file: .env
+    command: npm run dev
+    ports:
+      - 8080:8080
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
+      - .mitmproxy:/root/.mitmproxy

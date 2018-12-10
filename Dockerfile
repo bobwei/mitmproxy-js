@@ -1,15 +1,17 @@
-FROM node:8.11.4
+FROM nikolaik/python-nodejs:latest
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-COPY package.json yarn.lock ./
-RUN yarn
+RUN pip install mitmproxy
+
+COPY package.json package-lock.json ./
+RUN npm install
 
 COPY . .
 
 ENV PATH ./node_modules/.bin:$PATH
 
-RUN yarn build
+RUN npm run build
 
-CMD [ "yarn", "start" ]
+CMD [ "npm", "start" ]
