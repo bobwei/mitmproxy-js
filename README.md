@@ -19,6 +19,11 @@ brew install https://raw.githubusercontent.com/Homebrew/homebrew-core/f2a764ef94
 ```
 
 - [mitmproxy v4](https://mitmproxy.org/)
+
+```
+pip3 install mitmproxy
+```
+
 - `npm install`
 
 ## Start
